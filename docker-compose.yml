@@ -1,0 +1,7 @@
+version: '3'
+services:
+  flaskapp:
+    image: 1767526/flsk:v2
+    replicas: 3
+    ports:
+      - "3000:3000"
