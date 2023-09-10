@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REST API Example</title>
+</head>
+<body>
+    <h1>REST API Example</h1>
+
+    <!-- Button to trigger the API request -->
+    <button id="fetchButton">Fetch Data</button>
+
+    <!-- Display area for API response -->
+    <div id="result"></div>
+
+    <script crossorigin="*">
+        // JavaScript code to make a GET request to the REST API endpoint
+
+        // Define the URL of your REST API endpoint
+        const apiUrl = 'http://localhost:3000/'; // Replace with your API URL
+
+        // Get a reference to the button and result div
+        const fetchButton = document.getElementById('fetchButton');
+        const resultDiv = document.getElementById('result');
+
+        // Function to make the GET request
+        function fetchData() {
+            fetch(apiUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Handle the data from the API here
+                    resultDiv.innerHTML = 'API Response: ' + JSON.stringify(data, null, 2);
+                })
+                .catch(error => {
+                    // Handle any errors here
+                    console.error('There was a problem with the fetch operation:', error);
+                    resultDiv.innerHTML = 'Error: ' + error.message;
+                });
+        }
+
+        // Add a click event listener to the button
+        fetchButton.addEventListener('click', fetchData);
+    </script>
+</body>
+</html>
