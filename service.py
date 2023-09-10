@@ -9,4 +9,4 @@ def get_ip():
     return jsonify({'ip_address': ip_address})
 if __name__ == '__main__':
     print('Starting Server...')
-    app.run()
+    app.run(host="0.0.0.0", port=int("3000"), debug=True)
