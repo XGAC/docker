@@ -1,0 +1,16 @@
+version: '3'
+services:
+  webserver:
+    image: 1767526/flsk:v2
+    ports:
+      - "8080"
+    restart: always
+    network_mode: bridge
+    volumes:
+      - /home/docker/:/usr/share/nginx/html
+  frontend:
+    image: 1767526/frontend:v1
+    ports:
+      - "80"
+    network_mode: bridge
+    restart: always
